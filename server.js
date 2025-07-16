@@ -2,8 +2,9 @@ const sequelize = require('./config/db');
 require('dotenv').config();
 const express = require('express')
  
-const userRoutes = require('./routes/userRouter')
-const contactRoutes = require('./routes/contactRouter')
+const userRoutes = require('./routes/userRoutes')
+const contactRoutes = require('./routes/contactRoutes')
+const authRoutes = require('./routes/authRoutes')
  
 const app = express();
  
@@ -13,7 +14,8 @@ app.get('/', (req, res)=> res.send('api funcionando'))
  
 app.use('/api/users', userRoutes)
 app.use('/api/contact', contactRoutes)
- 
+app.use('/api/auth', authRoutes)
+
 const PORT = process.env.PORT;
  
 sequelize.authenticate()
